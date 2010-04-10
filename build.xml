@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     2008/08/01 16:38:45                                                        
+
+     spd-java    
+     java bindings for speech-dispatcher
+                   
+     Rui Batista rui.batista@ist.utl.pt>                                                                
+     ====================================================================== -->
+<project name="spd-java" default="compile">
+	<description>
+    	        java bindings for speech-dispatcher
+    </description>
+	<property name="SRC.dir" location="src"/>
+	<property name="BIN.dir" location="bin"/>
+	<property name="LIB.dir" location="lib"/>
+	<property name="DOC.dir" location="doc"/>
+
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="init" description="Compiles the source">
+		<javac srcdir="${SRC.dir}" destdir="${BIN.dir}" excludes="speechd/tests/**/*"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<mkdir dir="${BIN.dir}"/>
+		<mkdir dir="${LIB.dir}"/>
+		<tstamp/>
+	</target>
+	<target name="jar" description="creates a jar file" depends="compile">
+		<jar destfile="${LIB.dir}/speechd.jar" basedir="${BIN.dir}" excludes="speech/tests/**/*"/>
+	</target>
+
+	<target name="doc" description="create javadoc documentation">
+		<javadoc sourcepath="${SRC.dir}" destdir="${DOC.dir}" packagenames="speechd.ssip" access="protected" windowtitle="Speech-dispatcher java bindings" doctitle="Speech-dispatcher java bindings" overview="${SRC.dir}/overview.html" bottom="Copyright (c) 2008 - Rui Batista (rui.batista (at) ist (dot) utl (dot) pt)"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${BIN.dir}"/>
+		<delete dir="${DOC.dir}"/>
+		<delete dir="${LIB.dir}"/>
+	</target>
+
+	<target name="-compiletests" depends="compile">
+		<javac srcdir="${SRC.dir}" destdir="${BIN.dir}" includes="speechd/tests/**/*Test*.java"/>
+	</target>
+	<!-- ================================= 
+          target: junit              
+         ================================= -->
+	<target name="junit" depends="-compiletests" description="Run junit tests">
+		<junit printsummary="true" timeout="10">
+			<classpath location="${BIN.dir}"/>
+			<batchtest >
+				<fileset dir="${BIN.dir}">
+					<include name="**/*Test*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+</project>

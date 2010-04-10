@@ -1,0 +1,25 @@
+<html>
+<body>
+Package {@link speechd.ssip} contains classes and interfaces implementing the client part of the <a href="http://www.freebsoft.org/doc/speechd/ssip.html">SSIP</a> protocol. Package {@code speechd.tests} contains unit tests for these classes.
+<h2>SSIP Client</h2>
+<p>The {@link speechd.ssip.SSIPClient} class is the main entry point for communicating with SSIP servers. You create an instance of {@link speechd.ssip.SSIPClient }, it connects to server and you can use the various provided methods to send speaking commands, set synth parameters, etc.. We recommend taking a look on {@link speechd.ssip.SSIPClient} documentation.</p>
+<p>Are also provided auxiliary classes and enumeration to easy {@link speechd.ssip.SSIPClient} usage and client interface.</p>
+<h2>Error handling</h2>
+Error conditions are handled using java's exception handling mechanism. All thrown exceptions are subclasses of {@link speechd.ssip.SSIPException}, see {@link speechd.ssip.SSIPCommandException}, {@link speechd.ssip.SSIPDataException} and {@link speechd.ssip.SSIPCommunicationException}.</p>
+<h2>Low level SSIP communication</h2>
+<p>The {@link speechd.ssip.SSIPConnection} class is responsible for low level SSIP communication handling: sending commands, arcing responses, and all network negotiation. {@link speechd.ssip.SSIPClient} is implemented over an instance of {@code SSIPConnection}. You can use {@link speechd.ssip.SSIPConnection} directly if you want to use different commands from those {@link speechd.ssip.SSIPClient} provides, or implement those commands a different way. See also the {@link speechd.ssip.SSIPCommand} and {@link speechd.ssip.SSIPResponse} classes.</p>
+<h2>Event Handling</h2>
+<p>SSIP event handling is also supported, see the {@link speechd.ssip.SSIPEvent} class and {@link speechd.ssip.SSIPEventHandler} interface for documentation.</p>
+<h2>Logging activities</h2>
+<p>This code uses java standard logging api to log activities for debugging porposes, all classes log to descendents of the {@code speechd} logger. See the documentation for specific classes to know what loggers are used and the <a href="http://java.sun.com/j2se/1.4.2/docs/guide/util/logging/overview.html">Java logging overview</a></p>
+
+@author ragb
+@see speechd.ssip.SSIPClient
+@see speechd.ssip.SSIPConnection
+@see speechd.ssip.SSIPEventHandler
+@see speechd.ssip.SSIPEvent
+@see <a href="http://www.freebsoft.org/doc/speechd/ssip.html">SSIP documentation</a>
+@see <a href="http://www.freebsoft.org/doc/speechd/">Speech-dispatcher documentation</a>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+Speech dispatcher java Bindings
+
+This is a java interface to speech-dispatcher and possibly other servers implementing the SSIP specification.
+This code is in an experimental phase, it can contain bugs and the interface and implementation can change without notice.
+
+
+Copyright (c) 2008 - Rui Batista <rui.batista@ist.utl.pt>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+The license is also available at http://www.gnu.org/copyleft/gpl.html
+
+
+
+=== Contents ===
+
+- Java packages and classes, SSIP client implementation and auxiliary code
+- Junit tests
+- Ant build file to compile the code and generate documentation
+- This READNME
+
+
+=== Requirements ===
+
+To use this interface in your java projects you will need:
+- Sun JDK 5.0 or latter, or openJDK 6 or latter (The implementation uses java features not present in versions prior to java 5.0).
+- Ant version 1.7.x or latter, previous version s should work but were not tested.
+- Junit 3.8 if you want to run the tests.
+
+
+=== Compiling and using ===
+Use the provided ant build file, build.xml,  to compile the source and generate javadoc documentation with:
+- Run ``ant compile`` or just ``ant`` to compile the java source files to .class files,this will output to the ``bin`` directory.
+- Run ``ant jar``  to create a jar file from the compiled classes, this will output ``lib/speechd.jar``. Put this file on your java classpath to use this bindings in your project.
+- Run ``ant doc`` to generate javadoc documentation from the source files, this will output to the ``doc`` directory. You will need the javadoc utility installed, this is present in most JDK distributions.
+- Ant junit will compile and run junit tests
+- ``ant clean`` will clean all compiled code and documentation.
+
+
+To know more about the provided classes and methods We recommend generating the javadoc documentation and consulting it for reference, see the ``doc/index.html`` to start.
+
+
+=== Bugs and Suggestions ===
+
+Report bugs, corrections and suggestions to rui.batista@ist.utl.pt or to the speech-dispatcher mailing list at speechd@lists.freebsoft.org.
