@@ -307,7 +307,7 @@ public class SSIPConnection {
 	 * Sends data over this <code>SSIPConnection</code> and returns the server
 	 * response if no errors are found. Data will be escaped aconrding to SSIP
 	 * escaping rules.
-	 * 
+	 * g
 	 * @param data
 	 *            the data string to send
 	 * @return the server response
@@ -354,7 +354,7 @@ public class SSIPConnection {
 	private String escapeData(String data) {
 		String escaped = data;
 		if (escaped.startsWith("."))
-			escaped = ".." + escaped;
+			escaped = "." + escaped;
 		escaped = escaped.replaceAll(CRLF + ".", CRLF + "..");
 		return escaped;
 	}

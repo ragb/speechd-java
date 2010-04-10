@@ -11,51 +11,56 @@
 	<description>
     	        java bindings for speech-dispatcher
     </description>
-	<property name="SRC.dir" location="src"/>
-	<property name="BIN.dir" location="bin"/>
-	<property name="LIB.dir" location="lib"/>
-	<property name="DOC.dir" location="doc"/>
+	<property name="src.java.dir" location="src"/>
+	<property name="build.dir" location="build/" />
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
+	<property name="build.tests.dir" location="${build.dir}/tests" />
+	<property name="dist.dir" location="dist"/>
+	<property name="doc.dir" location="doc"/>
 
 	<!-- ================================= 
           target: compile              
          ================================= -->
 	<target name="compile" depends="init" description="Compiles the source">
-		<javac srcdir="${SRC.dir}" destdir="${BIN.dir}" excludes="speechd/tests/**/*"/>
+		<javac srcdir="${src.java.dir}" destdir="${build.classes.dir}" excludes="speechd/tests/**/*"/>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: init                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="init">
-		<mkdir dir="${BIN.dir}"/>
-		<mkdir dir="${LIB.dir}"/>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}"/>
+		<mkdir dir="${build.tests.dir}" />
+		<mkdir dir="${dist.dir}"/>
 		<tstamp/>
 	</target>
-	<target name="jar" description="creates a jar file" depends="compile">
-		<jar destfile="${LIB.dir}/speechd.jar" basedir="${BIN.dir}" excludes="speech/tests/**/*"/>
+	<target name="dist" description="creates a jar file" depends="compile">
+		<jar destfile="${dist.dir}/speechd.jar" basedir="${build.classes.dir}" />
 	</target>
 
 	<target name="doc" description="create javadoc documentation">
-		<javadoc sourcepath="${SRC.dir}" destdir="${DOC.dir}" packagenames="speechd.ssip" access="protected" windowtitle="Speech-dispatcher java bindings" doctitle="Speech-dispatcher java bindings" overview="${SRC.dir}/overview.html" bottom="Copyright (c) 2008 - Rui Batista (rui.batista (at) ist (dot) utl (dot) pt)"/>
+		<javadoc sourcepath="${src.java.dir}" destdir="${doc.dir}" packagenames="speechd.ssip" access="protected" windowtitle="Speech-dispatcher java bindings" doctitle="Speech-dispatcher java bindings" overview="${src.java.dir}/overview.html" bottom="Copyright (c) 2008 - Rui Batista (rui.batista (at) ist (dot) utl (dot) pt)"/>
 	</target>
 
 	<target name="clean">
-		<delete dir="${BIN.dir}"/>
+		<delete dir="${build.dir}"/>
 		<delete dir="${DOC.dir}"/>
-		<delete dir="${LIB.dir}"/>
+		<delete dir="${dist.dir}"/>
 	</target>
 
 	<target name="-compiletests" depends="compile">
-		<javac srcdir="${SRC.dir}" destdir="${BIN.dir}" includes="speechd/tests/**/*Test*.java"/>
+		<javac srcdir="${src.java.dir}" destdir="${build.tests.dir}" includes="speechd/tests/**/*Test*.java"/>
 	</target>
 	<!-- ================================= 
           target: junit              
          ================================= -->
-	<target name="junit" depends="-compiletests" description="Run junit tests">
+	<target name="run-tets" depends="-compiletests" description="Run junit tests">
 		<junit printsummary="true" timeout="10">
-			<classpath location="${BIN.dir}"/>
+			<classpath location="${build.classes.dir}"/>
+			<classpath location="${build.tests.dir}"/>
 			<batchtest >
-				<fileset dir="${BIN.dir}">
+				<fileset dir="${build.tests.dir}">
 					<include name="**/*Test*.class"/>
 				</fileset>
 			</batchtest>

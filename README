@@ -4,7 +4,7 @@ This is a java interface to speech-dispatcher and possibly other servers impleme
 This code is in an experimental phase, it can contain bugs and the interface and implementation can change without notice.
 
 
-Copyright (c) 2008 - Rui Batista <rui.batista@ist.utl.pt>
+Copyright (c) 2008, 2010 - Rui Batista <rui.batista@ist.utl.pt>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -29,22 +29,23 @@ The license is also available at http://www.gnu.org/copyleft/gpl.html
 - Junit tests
 - Ant build file to compile the code and generate documentation
 - This READNME
-
+- TODO file
+- Documentation included in source code 
 
 === Requirements ===
 
 To use this interface in your java projects you will need:
 - Sun JDK 5.0 or latter, or openJDK 6 or latter (The implementation uses java features not present in versions prior to java 5.0).
-- Ant version 1.7.x or latter, previous version s should work but were not tested.
+- Ant version 1.7.x or latter, previous versions should work but were not tested.
 - Junit 3.8 if you want to run the tests.
 
 
 === Compiling and using ===
 Use the provided ant build file, build.xml,  to compile the source and generate javadoc documentation with:
-- Run ``ant compile`` or just ``ant`` to compile the java source files to .class files,this will output to the ``bin`` directory.
-- Run ``ant jar``  to create a jar file from the compiled classes, this will output ``lib/speechd.jar``. Put this file on your java classpath to use this bindings in your project.
+- Run ``ant compile`` or just ``ant`` to compile the java source files to .class files,this will output to the ``build/classes`` directory.
+- Run ``ant dist``  to create a jar file from the compiled classes, this will output ``dist/speechd.jar``. Put this file on your java classpath to use this bindings in your project.
 - Run ``ant doc`` to generate javadoc documentation from the source files, this will output to the ``doc`` directory. You will need the javadoc utility installed, this is present in most JDK distributions.
-- Ant junit will compile and run junit tests
+- Ant run-tests will compile and run junit tests
 - ``ant clean`` will clean all compiled code and documentation.
 
 
