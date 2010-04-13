@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 <!-- ====================================================================== 
-     2008/08/01 16:38:45                                                        
 
-     spd-java    
-     java bindings for speech-dispatcher
+     opentts-java    
+     java bindings for Opentts
                    
      Rui Batista rui.batista@ist.utl.pt>                                                                
      ====================================================================== -->
-<project name="spd-java" default="compile">
+<project name="opentts-java" default="compile">
 	<description>
-    	        java bindings for speech-dispatcher
+    	        java bindings for opentts
     </description>
 	<property name="src.java.dir" location="src"/>
 	<property name="build.dir" location="build/" />
@@ -17,6 +16,7 @@
 	<property name="build.tests.dir" location="${build.dir}/tests" />
 	<property name="dist.dir" location="dist"/>
 	<property name="doc.dir" location="doc"/>
+	<property name="opentts-java.version" value="0.1" />
 
 	<!-- ================================= 
           target: compile              
@@ -33,10 +33,9 @@
 		<mkdir dir="${build.classes.dir}"/>
 		<mkdir dir="${build.tests.dir}" />
 		<mkdir dir="${dist.dir}"/>
-		<tstamp/>
 	</target>
 	<target name="dist" description="creates a jar file" depends="compile">
-		<jar destfile="${dist.dir}/speechd.jar" basedir="${build.classes.dir}" />
+		<jar destfile="${dist.dir}/opentts-${opentts-java.version}.jar" basedir="${build.classes.dir}" />
 	</target>
 
 	<target name="doc" description="create javadoc documentation">

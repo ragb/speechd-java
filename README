@@ -1,7 +1,9 @@
-Speech dispatcher java Bindings
+Opentts java Bindings
 
-This is a java interface to speech-dispatcher and possibly other servers implementing the SSIP specification.
+This is a java interface to openttsd and possibly other servers implementing the SSIP specification.
 This code is in an experimental phase, it can contain bugs and the interface and implementation can change without notice.
+
+This is a fork from the original speech-dispatcher java bindings.
 
 
 Copyright (c) 2008, 2010 - Rui Batista <rui.batista@ist.utl.pt>
@@ -49,9 +51,9 @@ Use the provided ant build file, build.xml,  to compile the source and generate 
 - ``ant clean`` will clean all compiled code and documentation.
 
 
-To know more about the provided classes and methods We recommend generating the javadoc documentation and consulting it for reference, see the ``doc/index.html`` to start.
+To know more about the provided classes and methods We recommend generating the javadoc documentation and consulting it for reference, see the ``doc/index.html`` get started.
 
 
 === Bugs and Suggestions ===
 
-Report bugs, corrections and suggestions to rui.batista@ist.utl.pt or to the speech-dispatcher mailing list at speechd@lists.freebsoft.org.
+Report bugs, corrections and suggestions to rui.batista@ist.utl.pt or to the opentts-dev mailing list at opentts-dev@lists.opentts.org.
