@@ -1,11 +1,11 @@
 /*
  * SSIPClientTest.java
  *
- * Copyright (C) 2008 Rui Batista <rui.batista@ist.utl.pt>
+ * Copyright (C) 2008, 2010 Rui Batista <rui.batista@ist.utl.pt>
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2, or (at your option)
+ * the Free Software Foundation; either version 2.1, or (at your option)
  * any later version.
  *
  * This software is distributed in the hope that it will be useful,
