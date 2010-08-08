@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!-- ====================================================================== 
 
-     opentts-java    
-     java bindings for Opentts
+     speechd-java    
+     java bindings for Speech-dispatcher
                    
      Rui Batista rui.batista@ist.utl.pt>                                                                
      ====================================================================== -->
-<project name="opentts-java" default="compile">
+<project name="speechd-java" default="compile">
 	<description>
-    	        java bindings for opentts
+    	        java bindings for Speech Dispatcher
     </description>
 	<property name="src.java.dir" location="src"/>
 	<property name="build.dir" location="build/" />
