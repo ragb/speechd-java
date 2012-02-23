@@ -1,9 +1,7 @@
-Opentts java Bindings
+Speech-Dispatcher java Bindings
 
-This is a java interface to openttsd and possibly other servers implementing the SSIP specification.
+This is a java interface to speech-dispatcher and possibly other servers implementing the SSIP specification.
 This code is in an experimental phase, it can contain bugs and the interface and implementation can change without notice.
-
-This is a fork from the original speech-dispatcher java bindings.
 
 
 Copyright (c) 2008, 2010 - Rui Batista <rui.batista@ist.utl.pt>
@@ -30,7 +28,7 @@ The license is also available at http://www.gnu.org/copyleft/lgpl.html
 - Java packages and classes, SSIP client implementation and auxiliary code
 - Junit tests
 - Ant build file to compile the code and generate documentation
-- This READNME
+- This READE
 - TODO file
 - Documentation included in source code 
 
@@ -38,7 +36,7 @@ The license is also available at http://www.gnu.org/copyleft/lgpl.html
 
 To use this interface in your java projects you will need:
 - Sun JDK 5.0 or latter, or openJDK 6 or latter (The implementation uses java features not present in versions prior to java 5.0).
-- Ant version 1.7.x or latter, previous versions should work but were not tested.
+- Ant version 1.7.0 or latter, previous versions should work but were not tested.
 - Junit 3.8 if you want to run the tests.
 
 

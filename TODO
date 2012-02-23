@@ -1,7 +1,6 @@
-* Convert name to opentts-java
+* Support Unix sockets.
 * Convert tests to junit4
 * Integrate in automake build process
-
 *Create a java wraper over libspeechd using JNI[1] or JNA[2] to easy maintaining matters on the long run. The SSIP interface should not be deleted unless it becomes so obsolet that it does not serve any porpose.
 
 [1] JNI: http://java.sun.com/docs/books/jni/
