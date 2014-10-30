@@ -87,7 +87,7 @@ public class SSIPClient {
 	/**
 	 * Default port where SSIP server is running.
 	 */
-	public static final int DEFAULT_PORT = 6560;
+	public static final String DEFAULT_PORT = "6560";
 
 	/**
 	 * The {@link SSIPConnection} used to handle raw SSIP communication.
@@ -141,9 +141,11 @@ public class SSIPClient {
 	 * @param name client name.
 	 * @param component Component for this connection, if {@code null} the "main" default value will be used.
 	 * @param user the client user name, if {@code null} the current user name will be used.
+	 * @host hostname to connect to, if {@code null} default mechanism is used
+	 * @port port to connect to, if {@code null} default mechanism applies
 	 * @throws SSIPException when SSIP communication errors are enconterered when connecting to server.
 	 */
-	public SSIPClient (String name, String component, String user)
+	public SSIPClient (String name, String component, String user, String host, String port)
 	throws SSIPException {
 		if (name == null) {
 			throw new NullPointerException("SSIP connection's name can't be null");
@@ -168,21 +170,23 @@ public class SSIPClient {
 		_logger.fine(String.format("Defining user as %s", _user));
 
 		// Find host where spd is running:
-		if ((_host = System.getProperty("speechd.host")) == null) {
-			if ((_host = System.getenv("SPEECHD_HOST")) == null)
-				_host = DEFAULT_HOST;
+		if ((_host = host) == null) {
+			if ((_host = System.getProperty("speechd.host")) == null) {
+				if ((_host = System.getenv("SPEECHD_HOST")) == null)
+					_host = DEFAULT_HOST;
+			}
 		}
 		_logger.fine(String.format("Defining host as %s", _host));
 
 		// Find default port:
-		String portStr;
-		if ((portStr = System.getProperty("speechd.port")) == null) {
-			if ((portStr = System.getenv("SPEECHD_PORT")) != null)
-				_port = Integer.parseInt(portStr);
-			else
-				_port = DEFAULT_PORT;
-		}
-		_logger.fine(String.format("Defining port as %d", _port));
+		String portStr = port;
+		if (portStr == null) {
+			if ((portStr = System.getProperty("speechd.port")) == null) {
+				if ((portStr = System.getenv("SPEECHD_PORT")) == null)
+					portStr = DEFAULT_PORT;
+			}
+		};
+		_port = Integer.parseInt(portStr);
 
 		// create connection and connect it:
 		_connection = new SSIPConnection(_host, _port);
